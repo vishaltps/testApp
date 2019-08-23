@@ -2,7 +2,7 @@ class SecretCodesController < ApplicationController
 	load_and_authorize_resource
 
   def index
-  	@secret_codes = SecretCode.includes(:user).all
+    @pagy, @secret_codes = pagy(SecretCode.includes(:user).all, items: 10)
   end
 
   def create

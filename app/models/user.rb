@@ -11,5 +11,4 @@ class User < ApplicationRecord
   has_one :secret_code, dependent: :destroy
 
   accepts_nested_attributes_for :secret_code
-  # before_create :build_secret_code
 end

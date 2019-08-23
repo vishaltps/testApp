@@ -13,11 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    binding.pry
     resource.save
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
+        secret_code = SecretCode.find(params[:secret_code][:code])
+        secret_code.update_column(:user_id, resource.id)
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)

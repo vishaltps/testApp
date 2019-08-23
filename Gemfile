@@ -62,3 +62,5 @@ gem "twitter-bootstrap-rails"
 gem 'devise'
 # For authorization
 gem 'cancancan'
+# For pagination of secret codes
+gem 'pagy', '~> 3.5'

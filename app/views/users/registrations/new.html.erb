@@ -31,7 +31,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <%= f.fields_for :secret_code do |sc| %>
+  <%= fields_for :secret_code do |sc| %>
     <%= sc.label :code %>
     <%= sc.select :code, options_for_select(SecretCode.available_codes&.map{ |i| [i.code, i.id] }), class: 'form-control' %>
   <% end %>
